@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Equivalencia;
 use App\Models\Marca;
 use App\Models\Modelo;
 use App\Models\Producto;
@@ -115,6 +116,45 @@ class DBSeed extends Command
         }
         
         $this->info('Import completed successfully!');
+        
+        $handle = fopen('equivalencias.csv', 'r');
+        
+        // Skip header row
+        fgetcsv($handle);
+        
+        $created = 0;
+        $skipped = 0;
+        
+        while (($row = fgetcsv($handle)) !== false) {
+            $codigo = trim($row[0]);
+            $marca = trim($row[1]);
+            $productoCodigo = trim($row[2]);
+            
+            $producto = Producto::where('codigo', $productoCodigo)->first();
+            
+            if ($producto) {
+                $equivalencia = Equivalencia::firstOrCreate(
+                    [
+                        'codigo' => $codigo,
+                        'marca' => $marca,
+                        'producto_id' => $producto->id,
+                    ]
+                );
+                
+                if ($equivalencia->wasRecentlyCreated) {
+                    $created++;
+                } else {
+                    $skipped++;
+                }
+            } else {
+                $this->warn("Producto with codigo {$productoCodigo} not found");
+                $skipped++;
+            }
+        }
+        
+        fclose($handle);
+        
+        $this->info("Import completed: {$created} created, {$skipped} skipped");
         return 0;
     }
 }

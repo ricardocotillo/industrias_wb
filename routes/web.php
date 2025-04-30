@@ -7,6 +7,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MarcaAPIController;
 use App\Http\Controllers\ProductoAPIController;
 use App\Http\Controllers\ModeloAPIController;
+use Illuminate\Support\Facades\Artisan;
+
 /**
  * Homepage controller.
  *
@@ -61,3 +63,8 @@ Route::prefix('api')->group(function () {
     Route::resource('marcas', MarcaAPIController::class)->only('index')->names('api.marcas');
 });
 
+# create route to run optimize:clear
+Route::get('/optimize', function () {
+    Artisan::call('optimize:clear');
+    return redirect()->back();
+});

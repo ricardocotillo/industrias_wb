@@ -192,7 +192,7 @@ Alpine.data('brandData', () => ({
     if (this.models) {
       params['modelos__in'] = this.models.join(',')
     }
-    const res = await axios.get('/api/marcas/', { params })
+    const res = await axios.get('/api/marcas', { params })
     this.brands = res.data.data
   }
 }))
@@ -237,7 +237,7 @@ Alpine.data('modelData', () => ({
     if (this.brands) {
       params['marca__in'] = this.brands.join(',')
     }
-    const res = await axios.get('/api/modelos/', { params })
+    const res = await axios.get('/api/modelos', { params })
     this.models = res.data.data
   },
 }))
@@ -277,7 +277,6 @@ Alpine.data('fullCartData', () => ({
         this.success = response.data.success;
       })
       .catch(error => {
-        console.log(error)
         this.sent = true;
         this.success = false;
       })
@@ -386,7 +385,7 @@ Alpine.data('products', () => ({
     const params = { ...this.params }
     
     // Debug the actual URL that will be requested
-    const url = '/api/productos/'
+    const url = '/api/productos'
     
     try {
       const res = await axios.get(url, { params })

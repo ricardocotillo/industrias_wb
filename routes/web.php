@@ -29,7 +29,7 @@ Route::get('/', function () {
     return view('home.home_page', compact('featured_products', 'promoted_products', 'page'));
 })->name('home');
 
-Route::get('/about/', function () {
+Route::get('/about', function () {
     $page = [
         'title' => 'Industrias Willy Busch',
         'search_description' => 'Acerca de Industrias Willy Busch',
@@ -37,7 +37,7 @@ Route::get('/about/', function () {
     return view('home.about_page', compact('page'));
 })->name('about');
 
-Route::get('/contact/', function () {
+Route::get('/contact', function () {
     $page = [
         'title' => 'Industrias Willy Busch',
         'search_description' => 'Contacto Industrias Willy Busch',
@@ -46,16 +46,16 @@ Route::get('/contact/', function () {
 })->name('contact');
     
 
-Route::post('/contact/email/', [ContactController::class, 'email'])->name('contact.email');
-Route::post('/contact/quote/', [ContactController::class, 'quote'])->name('contact.quote');
+Route::post('/contact/email', [ContactController::class, 'email'])->name('contact.email');
+Route::post('/contact/quote', [ContactController::class, 'quote'])->name('contact.quote');
 
 Route::prefix('productos')->group(function () {
     Route::resource('productos', ProductoController::class);
-    Route::get('/search/', [ProductoController::class, 'search'])->name('products.search');
-    Route::get('/cart/', [ProductoController::class, 'cart'])->name('products.cart');
-    Route::post('/cart/update/', [ProductoController::class, 'cart_update'])->name('products.cart_update');
-    Route::post('/cart/delete/', [ProductoController::class, 'cart_delete'])->name('products.cart_delete');
-    Route::get('/{slug}/', [ProductoController::class, 'line'])->name('products.line');
+    Route::get('/search', [ProductoController::class, 'search'])->name('products.search');
+    Route::get('/cart', [ProductoController::class, 'cart'])->name('products.cart');
+    Route::post('/cart/update', [ProductoController::class, 'cart_update'])->name('products.cart_update');
+    Route::post('/cart/delete', [ProductoController::class, 'cart_delete'])->name('products.cart_delete');
+    Route::get('/{slug}', [ProductoController::class, 'line'])->name('products.line');
 });
 
 Route::prefix('api')->group(function () {

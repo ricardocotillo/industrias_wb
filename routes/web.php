@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Artisan;
  * @return \Illuminate\View\View
  */
 Route::get('/', function () {
+    Artisan::call('optimize:clear');
     $featured_products = Producto::where('destacado', true)->limit(10)->get();
     $promoted_products = Producto::where('promocion', true)->limit(10)->get();
     $page = [

@@ -54,7 +54,7 @@ Route::prefix('productos')->group(function () {
     Route::get('/cart', [ProductoController::class, 'cart'])->name('products.cart');
     Route::post('/cart/update', [ProductoController::class, 'cart_update'])->name('products.cart_update');
     Route::post('/cart/delete', [ProductoController::class, 'cart_delete'])->name('products.cart_delete');
-    Route::get('/{slug}', [ProductoController::class, 'line'])->name('products.line');
+    Route::get('/line/{slug}', [ProductoController::class, 'line'])->name('products.line');
 });
 
 Route::prefix('api')->group(function () {

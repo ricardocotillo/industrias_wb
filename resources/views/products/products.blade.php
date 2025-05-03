@@ -97,11 +97,11 @@
           <ul class="flex flex-col gap-6 md:gap-4">
             <template x-for="producto in productos">
               <li class="flex flex-col gap-4 items-start md:flex-row" :data-code="producto.codigo">
-                <a :href="`/productos/${producto.id}/`" class="block w-full rounded md:w-40 shrink-0 bg-slate-100 md:min-w-40 md:min-h-40 aspect-square md:aspect-auto">
+                <a :href="`/productos/productos/${producto.id}/`" class="block w-full rounded md:w-40 shrink-0 bg-slate-100 md:min-w-40 md:min-h-40 aspect-square md:aspect-auto">
                   <img :data-code="producto.codigo" class="hidden object-contain w-full rounded border md:aspect-auto aspect-square md:w-40 md:h-40" src="" :alt="`${producto.codigo} imagen`"/>
                 </a>
                 <div class="flex flex-col gap-2 w-full grow">
-                  <a :href="`/productos/${producto.id}/`">
+                  <a :href="`/productos/productos/${producto.id}/`">
                     <div class="px-4 py-2 w-full text-lg italic font-extrabold text-center text-white bg-red-600 rounded-md md:w-60 font-helvetica" x-text="producto.codigo"></div>
                   </a>
                   <p class="font-semibold text-gray-500" x-text="producto.tipo"></p>

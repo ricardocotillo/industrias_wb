@@ -275,9 +275,12 @@ Alpine.data('fullCartData', () => ({
       .then(response => {
         this.sent = true
         this.success = response.data.success
+        console.log(response)
         form.reset()
-        this.cart = null
-        localStorage.removeItem('cart')
+        setTimeout(() => {
+          this.cart = null
+          localStorage.removeItem('cart')
+        }, 2000)
       })
       .catch(error => {
         this.sent = true

@@ -16,6 +16,13 @@
     @endif
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    {{-- Favicon links --}}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo/filtros_logo_16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logo/filtros_logo_32.png') }}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{{ asset('logo/filtros_logo_48.png') }}">
+    <link rel="icon" type="image/png" sizes="256x256" href="{{ asset('logo/filtros_logo_256.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('logo/filtros_logo_256.png') }}">
+
     {{-- Force all links in the live preview panel to be opened in a new tab --}}
     @if(isset($request->in_preview_panel) && $request->in_preview_panel)
     <base target="_blank">

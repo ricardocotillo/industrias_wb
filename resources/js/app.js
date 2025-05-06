@@ -273,12 +273,15 @@ Alpine.data('fullCartData', () => ({
     formData.set('message', this.text)
     axios.post(form.action, formData)
       .then(response => {
-        this.sent = true;
-        this.success = response.data.success;
+        this.sent = true
+        this.success = response.data.success
+        form.reset()
+        this.cart = null
+        localStorage.removeItem('cart')
       })
       .catch(error => {
-        this.sent = true;
-        this.success = false;
+        this.sent = true
+        this.success = false
       })
   },
   encodeCart() {

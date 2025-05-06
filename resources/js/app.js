@@ -275,7 +275,6 @@ Alpine.data('fullCartData', () => ({
       .then(response => {
         this.sent = true
         this.success = response.data.success
-        console.log(response)
         form.reset()
         setTimeout(() => {
           this.cart = null

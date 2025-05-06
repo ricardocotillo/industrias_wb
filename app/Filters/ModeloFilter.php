@@ -61,12 +61,12 @@ class ModeloFilter
 
     protected function nombreIExact(string $nombre): void
     {
-        $this->builder->where('nombre', 'ilike', $nombre);
+        $this->builder->whereRaw('LOWER(nombre) = ?', [strtolower($nombre)]);
     }
 
     protected function nombreIContains(string $nombre): void
     {
-        $this->builder->where('nombre', 'ilike', "%{$nombre}%");
+        $this->builder->whereRaw('LOWER(nombre) LIKE ?', ['%' . strtolower($nombre) . '%']);
     }
 
     protected function modeloProductosAnoExact(int $ano): void

@@ -7,7 +7,7 @@
   <div class="splide__track">
     <ul class="splide__list">
       <li class="splide__slide">
-        <img src="{{ asset('home/img/metropolitano.jpg') }}" alt="filtros slider 1" />
+        <img src="{{ asset('home/img/image-1.jpg') }}" alt="filtros slider 1" />
       </li>
       <li class="splide__slide">
         <img src="{{ asset('home/img/image-2.jpg') }}" alt="filtros slider 1" />
